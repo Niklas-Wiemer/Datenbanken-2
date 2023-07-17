@@ -1,0 +1,61 @@
+CREATE TYPE Nutzer_TYPE AS OBJECT (
+    Nutzername VARCHAR2,
+    Passwort VARCHAR2,
+    Email VARCHAR2,
+    Anzeigename VARCHAR2
+) NOT FINAL;
+
+CREATE TYPE Zuschauer_TYPE UNDER Nutzer_TYPE (
+    Nutzer REF Nutzer_TYPE
+)
+
+CREATE TYPE Streamer_TYPE UNDER Nutzer_TYPE (
+    Nutzer REF Nutzer_TYPE,
+    Bankverbindung REF Bankverbindung_TYPE
+)
+
+CREATE TYPE Bankverbindung_TYPE AS OBJECT (
+    IBAN VARCHAR2,
+    BIC VARCHAR2,
+    Name VARCHAR2,
+)
+
+CREATE TYPE Clip_TYPE AS OBJECT (
+    ClipNr VARCHAR2,
+    clipStart VARCHAR2,
+    laenge NUMBER,
+    Nutzer REF Nutzer_TYPE,
+    Stream REF Stream_TYPE
+)
+
+CREATE TYPE Stream_TYPE AS OBJECT (
+    streamNr NUMBER,
+    streamStart VARCHAR2,
+    ende VARCHAR2,
+    titel VARCHAR2,
+    kategorie VARCHAR2,
+)
+
+CREATE TYPE Werbepartner_TYPE AS OBJECT (
+    PartnerNr NUMBER,
+    Bankverbindung REF Bankverbindung_TYPE
+)
+
+CREATE TYPE Anzeige_TYPE AS OBJECT (
+    AnzeigeNr NUMBER,
+    Link VARCHAR2,
+    Werbepartner REF Werbepartner_TYPE
+)
+
+CREATE TYPE Nachricht_TYPE AS OBJECT (
+    NachrichtenNr NUMBER,
+    Zeitstempel VARCHAR2,
+    Inhalt VARCHAR2,
+    Nutzer REF Nutzer_TYPE,
+    Stream REF Stream_TYPE
+)
+
+CREATE TYPE Tag_TYPE AS OBJECT (
+    Inhalt VARCHAR2,
+    Stream REF Stream_TYPE
+)

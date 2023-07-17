@@ -1,0 +1,30 @@
+Mehrwertiges Attribut: Zuschauer
+Strukturiertes Attribut: Streamer
+Vererbungsbeziehung: Streamer und Zuschauer erben von Benutzer
+m : n Beziehung: Chat und Nachricht
+-----------------------------
+Anwendungsszenario: Twitch Streamer und Community Management
+
+In diesem Szenario entwickeln wir eine Datenbankanwendung zur Verwaltung und Analyse von Twitch-Streamern und ihren Communities. Diese Anwendung wäre sowohl für Streamer, zur Verwaltung ihrer Community und Verbesserung ihres Contents, als auch für die Zuschauer, zur Verbesserung ihres Interaktions- und Nutzungserlebnisses, von Vorteil.
+
+Die erste Entität in unserer Datenbank ist der Streamer. Ein strukturiertes Attribut 'Streamer_Profile' enthält Attribute wie Streamer_ID, Benutzername, E-Mail, gesponserte Spiele und die durchschnittliche Zuschauerzahl pro Stream.
+
+Eine zweite Entität ist der Zuschauer, repräsentiert durch Attribute wie Zuschauer_ID, Benutzername und eine Liste der von ihm abonnierten Streamer, die als mehrwertiges Attribut fungiert.
+
+Streamer und Zuschauer bilden eine Superklasse 'Benutzer', was die Vererbungsbeziehung darstellt. Jeder Benutzer hat allgemeine Attribute wie Benutzername, E-Mail und Passwort.
+
+Streams sind eine weitere Entität, repräsentiert durch Attribute wie Stream_ID, Streamer, Spiel, Startzeit, Endezeit und durchschnittliche Zuschauerzahl. Jeder Stream kann mehrere Zuschauer haben und jeder Zuschauer kann mehrere Streams gleichzeitig ansehen, was eine m:n-Beziehung darstellt.
+
+Eine weitere Entität sind Spiele, repräsentiert durch Spiel_ID, Titel, Genre und Entwickler. Eine Spiel-Entität ist mit der Stream-Entität verknüpft, da jeder Stream einem Spiel zugeordnet ist.
+
+Zusätzliche Entitäten sind Sponsor (mit Attributen wie Sponsor_ID, Name und Branche) und Werbung (mit Attributen wie Werbung_ID, Sponsor, Startzeitpunkt und Endzeitpunkt).
+
+Schließlich gibt es die Entitäten 'Chat' und 'Nachricht'. 'Chat' ist einem Stream zugeordnet und enthält mehrere 'Nachrichten', die von den Zuschauern gesendet wurden. 'Nachricht' enthält Attribute wie Nachricht_ID, Zuschauer, Zeitpunkt und Inhalt. Jede Nachricht gehört zu einem Chat und jeder Chat kann mehrere Nachrichten haben, was eine weitere m:n-Beziehung darstellt.
+
+-----------------------------
+
+In diesem Fall ist das mehrwertige Attribut die "Liste der von ihm abonnierten Streamer". Dies ist ein mehrwertiges Attribut, da ein einzelner Zuschauer mehrere Streamer abonnieren kann.
+
+In anderen Worten, für die Entität "Zuschauer" kann es mehrere Werte für das Attribut "abonnierte Streamer" geben. Jeder dieser Werte würde einen unterschiedlichen Streamer repräsentieren, den der Zuschauer abonniert hat.
+
+Es ist wichtig zu beachten, dass obwohl wir diese als "Liste" bezeichnen, in einer relationalen Datenbankstruktur würde man diese Beziehung eher über eine zusätzliche Tabelle abbilden, welche die Verbindung zwischen Zuschauern und Streamern repräsentiert, um die Komplexität der Handhabung von mehrwertigen Attributen zu vermeiden.
