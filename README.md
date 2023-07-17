@@ -1,2 +1,2 @@
 # Datenbanken-2
-Kleines Hibernate Programm zur Verwaltung von Datenbankeinträgen
+Kleines Hibernate Programm zur Verwaltung von Datenbankeinträgen (Uni Projekt)
